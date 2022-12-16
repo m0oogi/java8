@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Java Prettier ###
+node_modules/
+package-lock.json
+package.json
+.prettierrc.yml
