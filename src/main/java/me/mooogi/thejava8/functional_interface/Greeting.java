@@ -1,3 +1,5 @@
+package me.mooogi.thejava8.functional_interface;
+
 public class Greeting {
 
     private String name;
