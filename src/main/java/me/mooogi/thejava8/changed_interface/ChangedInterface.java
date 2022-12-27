@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Spliterator;
+import java.util.stream.Stream;
 
 public class ChangedInterface {
 
-    public static void changedInterface(boolean print) {
+    public static void changedInterface() {
         Foo foo = new DefaultFoo("mooogi");
         //        foo.printName();
         //        foo.printNameUpperCase();
@@ -24,13 +25,11 @@ public class ChangedInterface {
         //병렬처리할때 유용하게 쓸수있지않으까
         Spliterator<String> spliterator = names.spliterator(); //쪼갤수있는 기능을 가진 Iterator
         Spliterator<String> spliterator1 = spliterator.trySplit();
-        if (print) {
-            System.out.println("==============================================");
-            while (spliterator.tryAdvance(System.out::println));
-            System.out.println("==============================");
-            while (spliterator1.tryAdvance(System.out::println));
-            System.out.println("==============================================");
-        }
+        System.out.println("==============================================");
+        while (spliterator.tryAdvance(System.out::println));
+        System.out.println("==============================");
+        while (spliterator1.tryAdvance(System.out::println));
+        System.out.println("==============================================");
 
         names.stream(); //<- 얘도 spliterator 사용
         names.sort(String::compareToIgnoreCase);
@@ -39,9 +38,7 @@ public class ChangedInterface {
         Comparator<String> compareTo = String::compareTo;
         names.sort(compareToIgnoreCase.reversed());
         names.sort(compareToIgnoreCase.reversed().thenComparing(compareTo));
-        if (print) {
-            names.forEach(System.out::println);
-        }
+        names.forEach(System.out::println);
         /**
          * Interface 메소드 a(), b(), c()
          * 아래 abstract Class 메소드 a(), b(), c() <= 이파일 만드는 이유
@@ -50,13 +47,5 @@ public class ChangedInterface {
          * 이걸 java8부터는 인터페이스에서 가능
          * 메소드 들에서 default 선언을 해두고 implements 로 사용가능 (extends 안해도되서 이득)
          */
-    }
-
-    public static void streams(boolean print) {
-        List<String> names = new ArrayList<>();
-        names.add("foo");
-        names.add("bar");
-        names.add("apple");
-        names.add("banana");
     }
 }

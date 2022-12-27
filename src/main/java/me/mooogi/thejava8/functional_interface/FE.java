@@ -5,7 +5,7 @@ import java.util.function.*;
 
 public class FE {
 
-    public static void feAndLambda(boolean print) {
+    public static void feAndLambda() {
         // 익명 내부 클래스 anonymous inner class
         /* RunSomething runSomething = new RunSomething() {
             @Override
@@ -18,9 +18,7 @@ public class FE {
         RunSomething rs = number -> number + 10;
         //System.out.println(rs.doIt(20));
         Plus10 plusTen = new Plus10();
-        if (print) {
-            System.out.println(plusTen.apply(1));
-        }
+        System.out.println(plusTen.apply(1));
 
         Function<Integer, Integer> plus10 = n -> n + 10;
         Function<Integer, Integer> mulitply2 = n -> n * 2;
@@ -28,10 +26,8 @@ public class FE {
         Function<Integer, Integer> multiply2AndPlus10 = plus10.compose(mulitply2); //compose: 입력한 함수를 먼저 수행하고 결과가 나온걸 plus10의 입력값으로
         Function<Integer, Integer> plus10AndMultiply2 = plus10.andThen(mulitply2); //compose: plus10이 끝나고 안에꺼
 
-        if (print) {
-            System.out.println(multiply2AndPlus10.apply(2));
-            System.out.println(plus10AndMultiply2.apply(2));
-        }
+        System.out.println(multiply2AndPlus10.apply(2));
+        System.out.println(plus10AndMultiply2.apply(2));
 
         Predicate<String> startWithA = s -> s.startsWith("A");
         Predicate<Integer> isOdd = n -> n % 2 == 1;
@@ -45,6 +41,7 @@ public class FE {
         /* 메소드 래퍼런스 */
         // 1. 타입::스태틱 메소드
         UnaryOperator<String> hi = Greeting::hi;
+
         // 2. 객체래퍼런스::인스턴스 메소드
         Greeting greeting = new Greeting();
         UnaryOperator<String> hello = greeting::hello; //hi(static)은 안됨
@@ -66,20 +63,17 @@ public class FE {
             // 람다를 넣을 수 있는 자리에는 메소드 래퍼런스를 쓸수 있다
             String::compareToIgnoreCase
         );
-        if (print) {
-            System.out.println(Arrays.toString(names));
-        }
+        System.out.println(Arrays.toString(names));
+
         // 4. 타입::new
         Supplier<Greeting> newGreeting = Greeting::new;
         Function<String, Greeting> mooogiGreeting = Greeting::new; //두개가 같아보이지만 다른 생성자를 참조한다
         Greeting mooogi = mooogiGreeting.apply("mooogi");
-        if (print) {
-            System.out.println(mooogi.getName());
-        }
+        System.out.println(mooogi.getName());
     }
 
     //변수 캡처(로컬, 임시, 람다의 스코프 관계)
-    public static void scopes(boolean print) {
+    public static void scopes() {
         int baseNumber = 10; //자바8부터 final을 생략할수있다 (사실상 final인 경우 effective final(뒤에 수정안하면 됨))
 
         //로컬 클래스에서 local variable 사용
@@ -110,8 +104,6 @@ public class FE {
 
         //람다
         IntConsumer printInt = n -> System.out.println(n + baseNumber);
-        if (print) {
-            printInt.accept(baseNumber);
-        }
+        printInt.accept(baseNumber);
     }
 }
