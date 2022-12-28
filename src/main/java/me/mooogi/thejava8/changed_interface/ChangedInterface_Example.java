@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Spliterator;
-import java.util.stream.Stream;
 
-public class ChangedInterface {
+public class ChangedInterface_Example {
 
     public static void changedInterface() {
         Foo foo = new DefaultFoo("mooogi");

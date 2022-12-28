@@ -3,7 +3,7 @@ package me.mooogi.thejava8.functional_interface;
 import java.util.Arrays;
 import java.util.function.*;
 
-public class FE {
+public class FE_Example {
 
     public static void feAndLambda() {
         // 익명 내부 클래스 anonymous inner class

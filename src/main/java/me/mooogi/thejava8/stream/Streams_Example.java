@@ -7,7 +7,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Streams {
+public class Streams_Example {
 
     public static void streams() {
         List<String> names = new ArrayList<>();
